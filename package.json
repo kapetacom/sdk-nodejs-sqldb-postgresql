@@ -1,6 +1,6 @@
 {
   "name": "@blockware/sdk-sqldb-postgresql",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "index.js",
   "repository": {
@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/blockwarecom/sdk-nodejs-sqldb-postgresql#readme",
   "dependencies": {
-    "@blockware/sdk-config": "0.0.1",
+    "@blockware/sdk-config": "0.0.3",
     "pg": "7.11.0"
   }
 }

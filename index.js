@@ -1,7 +1,5 @@
-const PostgresClient = require('./src/PostgresClient');
-const AbstractPostgresRepository = require('./src/AbstractPostgresRepository');
+const PostgresDB = require('./src/PostgresDB');
 
 module.exports = {
-    PostgresClient,
-    AbstractPostgresRepository
+    PostgresDB
 };
