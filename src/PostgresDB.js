@@ -42,10 +42,8 @@ class PostgresDB {
         });
 
         await this._testConnection();
-
         this._ready = true;
 
-        console.log('Postgres client ready for %s --> %s:%s', this._dbName, this._postgresInfo.host, this._postgresInfo.port);
     }
 
     async _testConnection() {
@@ -58,7 +56,6 @@ class PostgresDB {
                     return;
                 }
                 client.query('SELECT NOW()', (err,res) => {
-                    console.log("SDK-POSTGRES",err , res);
                     
                     if (err) {
                         reject(err);
@@ -72,7 +69,6 @@ class PostgresDB {
     }
 
     async query(sql) {
-        console.log("query : ",this._pool);
         const connection = await this._pool.connect();
         try {
             return connection.query(sql);
@@ -81,9 +77,7 @@ class PostgresDB {
         }
     }
 
-    async update(sql) {
-        console.log("update : ",this._pool);
-        
+    async update(sql) {        
         const connection = await this._pool.connect();
         try {
             const result = await connection.query(sql);
@@ -97,19 +91,15 @@ class PostgresDB {
         }
     }
 
-    async findRowById(tableName, id, primaryKey) {
-        console.log("find row by id");
-        
+    async findRowById(tableName, id, primaryKey) {        
         return this.query(`SELECT * FROM "${tableName}" WHERE "${primaryKey}" = "${id}" LIMIT 1`);
     }
     
     async findAllRows(tableName) {
-        console.log("find all rows");
         return this.query(`SELECT * FROM "${tableName}"`);
     }
     
     async insertRow(tableName, entity) {
-        console.log("insert row");
         const fields = Object.keys(entity);
         const values = Object.values(entity);
         
@@ -119,7 +109,6 @@ class PostgresDB {
     }
     
     async updateRow(tableName, entity, primaryKey) {
-        console.log("update row");
         const id = entity[primaryKey];
         const keys = Object.keys(entity).filter(key => key !== primaryKey);
         const assignments = keys.map((key) => {
@@ -134,7 +123,6 @@ class PostgresDB {
     }
     
     async deleteRowById(tableName, id, primaryKey) {
-        console.log("delete row by id");
         return this.query(`DELETE FROM "${tableName}" WHERE "${primaryKey}" = "${id}" LIMIT 1`);
     }
 }
