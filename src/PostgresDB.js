@@ -9,15 +9,16 @@ class PostgresDB {
     /**
      * Initialise postgres client for database.
      *
-     * @param {string} dbName
+     * @param {string} resourceName
      */
-    constructor(dbName) {
-        this._dbName = dbName;
-        
+    constructor(resourceName) {
+        this._resourceName = resourceName;
+        this._dbName = null;
+
         this._ready = false;
         this._postgresInfo = null;
         this._pool = null;
-        
+
         //Add init method to startup sequence
         Config.onReady(async (provider) => {
             await this.init(provider);
@@ -31,7 +32,14 @@ class PostgresDB {
      * @return {Promise<void>}
      */
     async init(provider) {
-        this._postgresInfo = await provider.getResourceInfo(RESOURCE_TYPE, PORT_TYPE);
+        this._postgresInfo = await provider.getResourceInfo(RESOURCE_TYPE, PORT_TYPE, this._resourceName);
+        this._dbName = this._postgresInfo.options && this._postgresInfo.options.dbName ? this._postgresInfo.options.dbName : this._resourceName;
+
+        const dbUri = `${this._postgresInfo.host}:${this._postgresInfo.port}/${this._dbName}`;
+
+        console.log('Connecting to postgres database: %s', dbUri);
+
+        await this._ensureDatabase();
 
         this._pool = new Pool({
             host: this._postgresInfo.host,
@@ -42,15 +50,59 @@ class PostgresDB {
         });
 
         await this._testConnection();
+
+        console.log('Connected successfully to postgres database: %s', dbUri);
         this._ready = true;
 
+    }
+
+    /**
+     * Creates database if it doesn't already exist
+     *
+     * @returns {Promise<void>}
+     * @private
+     */
+    async _ensureDatabase() {
+        let client;
+        try {
+            client = new Client({
+                host: this._postgresInfo.host,
+                port: this._postgresInfo.port,
+                database: 'postgres',
+                user: this._postgresInfo.credentials.username,
+                password: this._postgresInfo.credentials.password
+            });
+
+            await client.connect();
+
+            const result = await client.query(`SELECT 1 FROM pg_database WHERE datname = '${this._dbName}'`);
+
+            if (result.rowCount > 0) {
+                console.log("Using postgres database: %s",  this._dbName);
+                return;
+            }
+
+            await client.query(`CREATE DATABASE "${this._dbName}"`);
+
+            console.log("Created postgres database: %s", this._dbName);
+
+        } finally {
+            if (client) {
+                client.end();
+            }
+        }
     }
 
     async _testConnection() {
         return  new Promise((resolve, reject) => {
             this._pool.connect((err,client,done)=>{
                 if(err){
-                    console.log("Transaction error while testing the connection",err.stack);
+                    if (err.code === '3D000') {
+                        //Database not found - create it
+                        client.query('')
+                    }
+                    console.log('err', err);
+                    console.log("Transaction error while testing the connection", err.stack);
                     done();
                     reject(err);
                     return;
