@@ -13,11 +13,11 @@ class PostgresDB {
      */
     constructor(dbName) {
         this._dbName = dbName;
-
+        
         this._ready = false;
         this._postgresInfo = null;
         this._pool = null;
-
+        
         //Add init method to startup sequence
         Config.onReady(async (provider) => {
             await this.init(provider);
@@ -42,22 +42,29 @@ class PostgresDB {
         });
 
         await this._testConnection();
-
         this._ready = true;
 
-        console.log('Postgres client ready for %s --> %s:%s', this._dbName, this._postgresInfo.host, this._postgresInfo.port);
     }
 
     async _testConnection() {
-        return new Promise((resolve, reject) => {
-            this._pool.query('SELECT NOW()', (err) => {
-                this._pool.end();
-                if (err) {
+        return  new Promise((resolve, reject) => {
+            this._pool.connect((err,client,done)=>{
+                if(err){
+                    console.log("Transaction error while testing the connection",err.stack);
+                    done();
                     reject(err);
                     return;
                 }
-                resolve();
-            });
+                client.query('SELECT NOW()', (err,res) => {
+                    
+                    if (err) {
+                        reject(err);
+                        return;
+                    }
+                    resolve();
+                });
+                client.release();
+            })
         });
     }
 
@@ -70,7 +77,7 @@ class PostgresDB {
         }
     }
 
-    async update(sql) {
+    async update(sql) {        
         const connection = await this._pool.connect();
         try {
             const result = await connection.query(sql);
@@ -84,23 +91,23 @@ class PostgresDB {
         }
     }
 
-    async findRowById(tableName, id, primaryKey) {
+    async findRowById(tableName, id, primaryKey) {        
         return this.query(`SELECT * FROM "${tableName}" WHERE "${primaryKey}" = "${id}" LIMIT 1`);
     }
-
+    
     async findAllRows(tableName) {
         return this.query(`SELECT * FROM "${tableName}"`);
     }
-
+    
     async insertRow(tableName, entity) {
         const fields = Object.keys(entity);
         const values = Object.values(entity);
-
+        
         return await this.update(`INSERT INTO "${tableName}" 
-                                ("${fields.join('","')}") VALUES ("${values.join('","')}")`);
-
+        ("${fields.join('","')}") VALUES ("${values.join('","')}")`);
+        
     }
-
+    
     async updateRow(tableName, entity, primaryKey) {
         const id = entity[primaryKey];
         const keys = Object.keys(entity).filter(key => key !== primaryKey);
@@ -108,13 +115,13 @@ class PostgresDB {
             const value = entity[key];
             return `"${key}" = "${value}"`;
         });
-
+        
         return await this.update(`
-                              UPDATE "${tableName}" SET 
-                                ${assignments.join(',\n')}
-                              WHERE "${primaryKey}" = "${id}" LIMIT 1`);
+        UPDATE "${tableName}" SET 
+        ${assignments.join(',\n')}
+        WHERE "${primaryKey}" = "${id}" LIMIT 1`);
     }
-
+    
     async deleteRowById(tableName, id, primaryKey) {
         return this.query(`DELETE FROM "${tableName}" WHERE "${primaryKey}" = "${id}" LIMIT 1`);
     }
