@@ -1,7 +1,7 @@
 const Config = require('@blockware/sdk-config');
 const { Pool, Client } = require('pg');
 
-const RESOURCE_TYPE = "sqldb.blockware.com/v1/postgresql";
+const RESOURCE_TYPE = "blockware/resource-type-postgresql";
 const PORT_TYPE = "postgres";
 
 class PostgresDB {
