@@ -17,7 +17,12 @@
   },
   "homepage": "https://github.com/blockwarecom/sdk-nodejs-sqldb-postgresql#readme",
   "dependencies": {
-    "@blockware/sdk-config": "^0.0.12",
     "pg": "^8.8.0"
+  },
+  "devDependencies": {
+    "@blockware/sdk-config": "<2"
+  },
+  "peerDependencies": {
+    "@blockware/sdk-config": "<2"
   }
 }
