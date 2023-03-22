@@ -1,6 +1,6 @@
 {
-  "name": "@blockware/sdk-sqldb-postgresql",
-  "version": "0.0.12",
+  "name": "@kapeta/sdk-sqldb-postgresql",
+  "version": "0.0.13",
   "description": "",
   "main": "index.js",
   "private": false,
@@ -12,9 +12,9 @@
     "url": "git+https://github.com/blockwarecom/sdk-nodejs-sqldb-postgresql.git"
   },
   "keywords": [
-    "blockware"
+    "kapeta"
   ],
-  "author": "Henrik Hofmeister <hh@blockware.com>",
+  "author": "Henrik Hofmeister <hh@kapeta.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/blockwarecom/sdk-nodejs-sqldb-postgresql/issues"
@@ -24,9 +24,9 @@
     "pg": "^8.8.0"
   },
   "devDependencies": {
-    "@blockware/sdk-config": "<2"
+    "@kapeta/sdk-config": "<2"
   },
   "peerDependencies": {
-    "@blockware/sdk-config": "<2"
+    "@kapeta/sdk-config": "<2"
   }
 }
