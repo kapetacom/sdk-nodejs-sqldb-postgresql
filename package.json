@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/blockwarecom/sdk-nodejs-sqldb-postgresql.git"
+    "url": "git+https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql.git"
   },
   "keywords": [
     "kapeta"
@@ -17,9 +17,9 @@
   "author": "Henrik Hofmeister <hh@kapeta.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/blockwarecom/sdk-nodejs-sqldb-postgresql/issues"
+    "url": "https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/issues"
   },
-  "homepage": "https://github.com/blockwarecom/sdk-nodejs-sqldb-postgresql#readme",
+  "homepage": "https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql#readme",
   "dependencies": {
     "pg": "^8.8.0"
   },
