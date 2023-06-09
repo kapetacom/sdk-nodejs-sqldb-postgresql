@@ -1,32 +1,73 @@
 {
-  "name": "@kapeta/sdk-sqldb-postgresql",
-  "version": "0.0.16",
-  "description": "",
-  "main": "index.js",
-  "private": false,
-  "publishConfig": {
-    "access": "public"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql.git"
-  },
-  "keywords": [
-    "kapeta"
-  ],
-  "author": "Henrik Hofmeister <hh@kapeta.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/issues"
-  },
-  "homepage": "https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql#readme",
-  "dependencies": {
-    "pg": "^8.8.0"
-  },
-  "devDependencies": {
-    "@kapeta/sdk-config": "<2"
-  },
-  "peerDependencies": {
-    "@kapeta/sdk-config": "<2"
-  }
+    "name": "@kapeta/sdk-sqldb-postgresql",
+    "version": "0.0.16",
+    "description": "",
+    "main": "index.js",
+    "private": false,
+    "publishConfig": {
+        "access": "public"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql.git"
+    },
+    "keywords": [
+        "kapeta"
+    ],
+    "author": "Henrik Hofmeister <hh@kapeta.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/issues"
+    },
+    "scripts": {
+        "clean": "rm -rf ./dist",
+        "build:esm": "tsc --module esnext --outDir ./dist/esm",
+        "build:cjs": "tsc --module commonjs --outDir ./dist/cjs",
+        "build": "npm run clean && npm run build:esm && npm run build:cjs",
+        "format": "prettier --write .",
+        "lint": "tsc --noEmit && eslint src/**/*.ts",
+        "prepublishOnly": "npm run build"
+    },
+    "homepage": "https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql#readme",
+    "prettier": "@kapeta/prettier-config",
+    "release": {
+        "plugins": [
+            "@semantic-release/commit-analyzer",
+            "@semantic-release/release-notes-generator",
+            [
+                "@semantic-release/changelog",
+                {
+                    "changelogFile": "CHANGELOG.md"
+                }
+            ],
+            "@semantic-release/npm",
+            "@semantic-release/github",
+            [
+                "@semantic-release/git",
+                {
+                    "assets": [
+                        "CHANGELOG.md",
+                        "package.json",
+                        "package-lock.json"
+                    ],
+                    "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+                }
+            ]
+        ]
+    },
+    "dependencies": {
+        "pg": "^8.8.0"
+    },
+    "devDependencies": {
+        "@kapeta/sdk-config": "<2",
+        "@types/pg": "^8.10.2",
+        "@kapeta/eslint-config": "^0.6.0",
+        "@kapeta/prettier-config": "^0.6.0",
+        "eslint": "^8.42.0",
+        "eslint-config-prettier": "^8.8.0",
+        "prettier": "^2.8.8"
+    },
+    "peerDependencies": {
+        "@kapeta/sdk-config": "<2"
+    }
 }
