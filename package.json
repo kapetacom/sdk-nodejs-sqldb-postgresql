@@ -1,6 +1,6 @@
 {
     "name": "@kapeta/sdk-sqldb-postgresql",
-    "version": "0.0.16",
+    "version": "1.0.0",
     "description": "",
     "main": "index.js",
     "private": false,
