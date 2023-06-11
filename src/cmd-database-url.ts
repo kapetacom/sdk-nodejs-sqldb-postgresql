@@ -3,6 +3,9 @@ import Config from '@kapeta/sdk-config';
 const RESOURCE_TYPE = 'kapeta/resource-type-postgresql';
 const PORT_TYPE = 'postgres';
 
+//Disable any logging from the SDK
+console.log = function() {}
+
 async function resolveUrl(resourceName: string) {
     const provider = await Config.init(process.cwd(), '' );
     const postgresInfo = await provider.getResourceInfo(RESOURCE_TYPE, PORT_TYPE, resourceName);
@@ -29,7 +32,7 @@ if (!process.argv[2]) {
 }
 
 resolveUrl(process.argv[2]).then(url => {
-    console.log(url);
+    process.stdout.write(url);
     process.exit(0);
 }).catch(err => {
     console.error(err);

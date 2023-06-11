@@ -1,7 +1,7 @@
 {
     "name": "@kapeta/sdk-sqldb-postgresql",
     "version": "1.1.0",
-    "description": "",
+    "description": "Kapeta SDK for PostgreSQL",
     "main": "index.js",
     "private": false,
     "publishConfig": {
@@ -59,7 +59,8 @@
         ]
     },
     "dependencies": {
-        "pg": "^8.8.0"
+        "@prisma/client": "^4.15.0",
+        "prisma": "^4.15.0"
     },
     "devDependencies": {
         "@kapeta/sdk-config": "<2",
