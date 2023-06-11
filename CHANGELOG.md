@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/compare/v1.2.1...v1.2.2) (2023-06-11)
+
+
+### Bug Fixes
+
+* Default to commonjs in main module ([1ad5883](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/commit/1ad5883d63cd979d9e27f6b8971ec992d2383933))
+
 ## [1.2.1](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/compare/v1.2.0...v1.2.1) (2023-06-11)
 
 
