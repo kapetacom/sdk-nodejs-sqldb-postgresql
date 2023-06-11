@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/compare/v1.2.0...v1.2.1) (2023-06-11)
+
+
+### Bug Fixes
+
+* Added proper exports and module type ([5bbd492](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/commit/5bbd49213f6ffc53aae14e18a4f8b56b322fde94))
+
 # [1.2.0](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/compare/v1.1.1...v1.2.0) (2023-06-11)
 
 
