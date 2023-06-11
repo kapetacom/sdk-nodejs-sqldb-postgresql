@@ -19,6 +19,9 @@
     "bugs": {
         "url": "https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/issues"
     },
+    "bin": {
+        "kap-database-url": "./bin/database-url"
+    },
     "scripts": {
         "clean": "rm -rf ./dist",
         "build:esm": "tsc --module esnext --outDir ./dist/esm && echo '{\"type\":\"module\"}' > ./dist/esm/package.json",
