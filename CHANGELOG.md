@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/compare/v1.0.1...v1.1.0) (2023-06-11)
+
+
+### Features
+
+* Add command line tool for getting db url ([b729606](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/commit/b729606e920c23cb6071860ae4039e8e6a48fe20))
+
 ## [1.0.1](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/compare/v1.0.0...v1.0.1) (2023-06-09)
 
 
