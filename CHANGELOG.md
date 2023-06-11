@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/compare/v1.1.1...v1.2.0) (2023-06-11)
+
+
+### Features
+
+* Use Prisma instead of PG for DB abstraction ([#4](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/issues/4)) ([663a35a](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/commit/663a35affc444fd15d9cd0a71ef1fa012ec5ced7))
+
 ## [1.1.1](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/compare/v1.1.0...v1.1.1) (2023-06-11)
 
 
