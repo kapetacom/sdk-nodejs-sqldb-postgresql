@@ -2,7 +2,7 @@
     "name": "@kapeta/sdk-sqldb-postgresql",
     "version": "1.2.1",
     "description": "Kapeta SDK for PostgreSQL",
-    "type": "module",
+    "type": "commonjs",
     "exports": {
         ".": {
             "import": {
