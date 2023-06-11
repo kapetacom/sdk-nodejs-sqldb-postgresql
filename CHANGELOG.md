@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/compare/v1.1.0...v1.1.1) (2023-06-11)
+
+
+### Bug Fixes
+
+* Change bin to kap-postgres-url - to not clash with other providers ([14dd2e9](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/commit/14dd2e9983af1abd234e068ba71517b2ac62acc1))
+
 # [1.1.0](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/compare/v1.0.1...v1.1.0) (2023-06-11)
 
 
