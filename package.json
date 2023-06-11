@@ -20,7 +20,7 @@
         "url": "https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/issues"
     },
     "bin": {
-        "kap-database-url": "./bin/database-url"
+        "kap-postgres-url": "./bin/database-url"
     },
     "scripts": {
         "clean": "rm -rf ./dist",
