@@ -1,6 +1,5 @@
 import Config, { ConfigProvider, ResourceInfo } from '@kapeta/sdk-config';
-const RESOURCE_TYPE = 'kapeta/resource-type-postgresql';
-const PORT_TYPE = 'postgres';
+import {createDBURI} from "./utils";
 
 interface PrismaClient {
     $connect(): Promise<void>;
@@ -11,8 +10,6 @@ interface PrismaClient {
 export abstract class PostgresDB<T extends PrismaClient> {
     private readonly _resourceName: string;
     private _ready: boolean = false;
-    private _postgresInfo?: ResourceInfo;
-    private _dbName?: string;
     private _prisma?: T;
     constructor(resourceName:string) {
         this._resourceName = resourceName;
@@ -24,22 +21,7 @@ export abstract class PostgresDB<T extends PrismaClient> {
     abstract createClient(opts: any): T;
 
     async init(provider: ConfigProvider) {
-        this._postgresInfo = await provider.getResourceInfo(RESOURCE_TYPE, PORT_TYPE, this._resourceName);
-        this._dbName =
-            this._postgresInfo.options && this._postgresInfo.options.dbName
-                ? this._postgresInfo.options.dbName
-                : this._resourceName;
-
-        let credentials = '';
-        if (this._postgresInfo?.credentials?.username) {
-            credentials += this._postgresInfo.credentials.username;
-
-            if (this._postgresInfo.credentials.password) {
-                credentials += ':' + this._postgresInfo.credentials.password;
-            }
-        }
-
-        const url = `postgresql://${credentials}@${this._postgresInfo.host}:${this._postgresInfo.port}/${this._dbName}`;
+        const url = createDBURI(provider, this._resourceName);
         console.log('Connecting to postgres database: %s', url);
 
         this._prisma = this.createClient({

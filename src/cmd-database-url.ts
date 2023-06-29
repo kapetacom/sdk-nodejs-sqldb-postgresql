@@ -1,29 +1,13 @@
 import Config from '@kapeta/sdk-config';
+import {createDBURI} from "./utils";
 
-const RESOURCE_TYPE = 'kapeta/resource-type-postgresql';
-const PORT_TYPE = 'postgres';
 
 //Disable any logging from the SDK
 console.log = function() {}
 
 async function resolveUrl(resourceName: string) {
     const provider = await Config.init(process.cwd(), '' );
-    const postgresInfo = await provider.getResourceInfo(RESOURCE_TYPE, PORT_TYPE, resourceName);
-    const dbName =
-        postgresInfo.options && postgresInfo.options.dbName
-            ? postgresInfo.options.dbName
-            : resourceName;
-
-    let credentials = ''
-    if (postgresInfo.credentials?.username) {
-        credentials += encodeURIComponent(postgresInfo.credentials.username);
-
-        if (postgresInfo.credentials.password) {
-            credentials += ':' + encodeURIComponent(postgresInfo.credentials.password);
-        }
-    }
-
-    return `postgresql://${credentials}@${postgresInfo.host}:${postgresInfo.port}/${encodeURIComponent(dbName)}`;
+    return createDBURI(provider, resourceName);
 }
 
 if (!process.argv[2]) {
