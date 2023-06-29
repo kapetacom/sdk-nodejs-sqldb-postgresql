@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/compare/v1.2.2...v1.2.3) (2023-06-29)
+
+
+### Bug Fixes
+
+* Ensure we encode credentials and db name in uri ([#5](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/issues/5)) ([46d2760](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/commit/46d2760d8d2c8ebe435010fe9538046e5e268a9e))
+
 ## [1.2.2](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/compare/v1.2.1...v1.2.2) (2023-06-11)
 
 
