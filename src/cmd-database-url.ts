@@ -16,14 +16,14 @@ async function resolveUrl(resourceName: string) {
 
     let credentials = ''
     if (postgresInfo.credentials?.username) {
-        credentials += postgresInfo.credentials.username;
+        credentials += encodeURIComponent(postgresInfo.credentials.username);
 
         if (postgresInfo.credentials.password) {
-            credentials += ':' + postgresInfo.credentials.password;
+            credentials += ':' + encodeURIComponent(postgresInfo.credentials.password);
         }
     }
 
-    return `postgresql://${credentials}@${postgresInfo.host}:${postgresInfo.port}/${dbName}`;
+    return `postgresql://${credentials}@${postgresInfo.host}:${postgresInfo.port}/${encodeURIComponent(dbName)}`;
 }
 
 if (!process.argv[2]) {
