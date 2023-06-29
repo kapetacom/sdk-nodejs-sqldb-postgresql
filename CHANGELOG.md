@@ -1,3 +1,10 @@
+## [1.2.5](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/compare/v1.2.4...v1.2.5) (2023-06-29)
+
+
+### Bug Fixes
+
+* Remembet to await ([f6dd290](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/commit/f6dd2901ce476961e6ae961be5f6ffb304035a32))
+
 ## [1.2.4](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/compare/v1.2.3...v1.2.4) (2023-06-29)
 
 
