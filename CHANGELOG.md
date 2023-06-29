@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/compare/v1.2.3...v1.2.4) (2023-06-29)
+
+
+### Bug Fixes
+
+* Moved uri creation into util to ensure its always the same ([6dd550e](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/commit/6dd550e09d3953aff63d142d08d8c3ec25c20a4e))
+
 ## [1.2.3](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/compare/v1.2.2...v1.2.3) (2023-06-29)
 
 
