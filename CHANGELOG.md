@@ -1,3 +1,10 @@
+## [1.2.6](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/compare/v1.2.5...v1.2.6) (2023-09-13)
+
+
+### Bug Fixes
+
+* fixing potetial null values ([0a90866](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/commit/0a90866c02dcd47509c9a506e4667f27d0d9e839))
+
 ## [1.2.5](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/compare/v1.2.4...v1.2.5) (2023-06-29)
 
 
