@@ -1,3 +1,8 @@
+/**
+ * Copyright 2023 Kapeta Inc.
+ * SPDX-License-Identifier: MIT
+ */
+
 import {ConfigProvider} from "@kapeta/sdk-config";
 
 export const RESOURCE_TYPE = 'kapeta/resource-type-postgresql';

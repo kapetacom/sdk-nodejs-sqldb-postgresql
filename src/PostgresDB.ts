@@ -1,3 +1,8 @@
+/**
+ * Copyright 2023 Kapeta Inc.
+ * SPDX-License-Identifier: MIT
+ */
+
 import Config, { ConfigProvider, ResourceInfo } from '@kapeta/sdk-config';
 import {createDBURI} from "./utils";
 
