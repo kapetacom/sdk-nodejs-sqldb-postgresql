@@ -77,8 +77,8 @@
         ]
     },
     "dependencies": {
-        "@prisma/client": "^4.15.0",
-        "prisma": "^4.15.0"
+        "@prisma/client": "^5.6.0",
+        "prisma": "^5.6.0"
     },
     "devDependencies": {
         "@kapeta/sdk-config": "<2",
