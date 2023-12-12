@@ -1,3 +1,10 @@
+## [1.2.7](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/compare/v1.2.6...v1.2.7) (2023-12-12)
+
+
+### Bug Fixes
+
+* Bump prisma to latest ([#8](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/issues/8)) ([14ded52](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/commit/14ded52b31f337790183016186b4ac5b52bf442c))
+
 ## [1.2.6](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/compare/v1.2.5...v1.2.6) (2023-09-13)
 
 
