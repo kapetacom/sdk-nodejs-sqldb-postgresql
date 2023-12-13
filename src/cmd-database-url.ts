@@ -11,7 +11,7 @@ import {createDBURI} from "./utils";
 console.log = function() {}
 
 async function resolveUrl(resourceName: string) {
-    const provider = await Config.init(process.cwd(), '' );
+    const provider = await Config.init(process.cwd());
     return createDBURI(provider, resourceName);
 }
 
