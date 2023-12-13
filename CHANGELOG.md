@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/compare/v1.2.7...v2.0.0) (2023-12-13)
+
+
+### Features
+
+* Increment to V2 ([f18eaf9](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/commit/f18eaf99166ac2e13cb624a3a95a75133407c115))
+
+
+### BREAKING CHANGES
+
+* Increments to V2
+
 ## [1.2.7](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/compare/v1.2.6...v1.2.7) (2023-12-12)
 
 
