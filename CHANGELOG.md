@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/compare/v2.0.0...v2.1.0) (2024-01-07)
+
+
+### Features
+
+* Add functional client creator and documentation ([#9](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/issues/9)) ([04dd5af](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/commit/04dd5afbbbf5ead287d42f77493403b12cede5b9))
+
 # [2.0.0](https://github.com/kapetacom/sdk-nodejs-sqldb-postgresql/compare/v1.2.7...v2.0.0) (2023-12-13)
 
 
